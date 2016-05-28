@@ -1,5 +1,5 @@
 
-package eshop_project;
+package Model;
 
 /**
  *
@@ -17,11 +17,8 @@ public abstract class Product {
     boolean hasScreen = false;
     
     public Product(){
-        this.ProductCode = ++Product.productSerialNo; 
+        this.ProductCode = ++Product.productSerialNo;
     }
-    
-    
-
     public String getName() {
         return name;
     }

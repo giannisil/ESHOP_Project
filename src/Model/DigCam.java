@@ -1,5 +1,5 @@
 
-package eshop_project;
+package Model;
 
 /**
  *
@@ -15,11 +15,11 @@ public class DigCam extends Product {
         super.hasScreen = true;
     }
     public DigCam (String Brand, int Zoom, float Price, int CamRes){
-        this.Brand           = Brand;
+        super.hasScreen = true; 
+        this.Brand      = Brand;
         this.Zoom       = Zoom;
         this.Price      = Price;
-        this.CamRes     =CamRes;
-        this.hasScreen  =true; 
+        this.CamRes     = CamRes;
     }
     
 }

@@ -1,5 +1,5 @@
 
-package eshop_project;
+package Model;
 
 /**
  *
@@ -9,12 +9,13 @@ public class MobilePhone extends Product {
     private String OS;
     private String CPU;
     private int CamRes;
-    public enum connectivity {3G , 4G
-    }
-public MobilePhone (){
+    private Connectivity connectivity;
+	
+    public MobilePhone (){
         super.hasScreen = true;
-}
-public MobilePhone (String OS, String CPU, int CamRes, enum connectivity){
+    }
+    
+    public MobilePhone (String OS, String CPU, int CamRes, enum Connectivity connectivity){
         super.hasScreen    = true;
         this.OS            = OS;
         this.CPU           = CPU;

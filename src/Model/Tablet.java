@@ -1,5 +1,5 @@
 
-package eshop_project;
+package Model;
 
 /**
  *
@@ -15,11 +15,11 @@ public class Tablet extends Product {
         super.hasScreen = true;
     }
     public Tablet (String OS, String CPU, int Memory, String Brand){
+        super.hasScreen   = true; 
         this.OS           = OS;
         this.CPU          = CPU;
         this.Memory       = Memory;
-        this.Brand        =Brand;
-        this.hasScreen    =true; 
+        this.Brand        = Brand;
     
     }  
     

@@ -1,5 +1,5 @@
 
-package eshop_project;
+package Model;
 
 /**
  *

@@ -1,5 +1,5 @@
 
-package eshop_project;
+package Model;
 
 /**
  *
@@ -14,9 +14,9 @@ public class TV extends Product {
         super.hasScreen = true;
     }
     public TV (String Brand, String FrameRate, float Price){
-        this.Brand           = Brand;
-        this.FrameRate       = FrameRate;
-        this.Price       = Price;
-        this.hasScreen    =true; 
+        super.hasScreen     = true; 
+        this.Brand          = Brand;
+        this.FrameRate      = FrameRate;
+        this.Price          = Price;
     }
 }
