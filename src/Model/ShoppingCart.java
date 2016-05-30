@@ -8,7 +8,7 @@ import java.util.List;
  * @author iliadis
  */
 public class ShoppingCart {	
-	private List <ProductEntry> cart;
+	private List <ShoppingCartEntry> cart;
 	private float totalCartPrice;
 	
 	

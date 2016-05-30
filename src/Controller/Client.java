@@ -19,8 +19,8 @@ public class Client extends User{
 	public void displayCart();
 	public boolean removeProductFromCart(Product);
 	public Order submitOrder();
-	public void displayOrderState(Order);
 	public boolean cancelOrder(Order);
 	public void displayOrders();
+	private void displayOrderState(Order);
 	
 }

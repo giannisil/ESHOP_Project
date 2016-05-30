@@ -10,5 +10,6 @@ public abstract class User {
 	private String password;
 	UserType userType;
 	
+	void displayProductCategories(){} // Design screen (2)
 	
 }

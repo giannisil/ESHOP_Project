@@ -5,7 +5,7 @@ package Model;
  * @author iliadis
  */
 
-public class ProductEntry {
+public class ShoppingCartEntry {
 	Product product;
 	int amount;
 }
