@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public final class IndividualClientsLog {
     private static volatile IndividualClientsLog instance;
-	private HashMap<String, IndividualClientEntry> clientsLog;
+    private HashMap<String, IndividualClientEntry> clientsLog;
 	
     private IndividualClientsLog(){}
     public static IndividualClientsLog getInstance(){

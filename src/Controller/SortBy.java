@@ -11,6 +11,5 @@ package Controller;
  */
 public enum SortBy {PRODUCT_CODE,
 					PRODUCT_CATEGORY,
-					ALPHABETICAL
-	
+					ALPHABETICALLY	
 }

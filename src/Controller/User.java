@@ -8,7 +8,7 @@ package Controller;
 public abstract class User {
 	private String username;
 	private String password;
-	private enum UserTYpe userType;
+	UserType userType;
 	
 	
 }

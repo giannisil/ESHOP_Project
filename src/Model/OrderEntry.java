@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author iliadis
  */
-public class Order {
+public class OrderEntry {
 	private ShoppingCart relatedCart;
 	static int ordersCount;
 	private int orderSerialNo;

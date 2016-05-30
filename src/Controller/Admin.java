@@ -7,6 +7,9 @@ package Controller;
  */
 public class Admin extends User{
 	
+	public Admin (){
+		super.userType = UserType.ADMIN;
+	}
 	public User createUSer(String username, String password);
 	public boolean logout();
 	public boolean addProductToCatalog(Product);
@@ -14,7 +17,6 @@ public class Admin extends User{
 	public boolean updateOrderState(OrderState,Order);
 	public void displayClientLog();
 	public void displayOrders();
-	
 	
 	
 	

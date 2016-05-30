@@ -11,5 +11,6 @@ public enum OrderState {
 	AVAIL_CHECK,
 	COLLECTION,
 	PRICING,
-	SHIPPING
+	SHIPPING,
+	CANCELED
 }
