@@ -67,7 +67,8 @@ public class PasswordFormPanel extends JPanel{
 		}
 		public void actionPerformed(ActionEvent e) {
 			if (ProgramState.getInstance().validateCredentials(this.username, this.password)){
-				MainFrame.getInstance().setContentPanel(new ProductCategoryPanel());
+				ProgramState.getInstance().setCurrentUser(UserCatalog.getInstance().fetchUser(this.username)); // Fetch User object with the validated username and set it as current user
+//				MainFrame.getInstance().setContentPanel(new ProductCategoryPanel()); // TODO implement class ProductCategoryPanel
 			}
 			else {
 				this.errorLabel.setVisible(true);

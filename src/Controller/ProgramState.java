@@ -11,7 +11,9 @@ public class ProgramState {
 	private User currentUser;
 
 	
-	private ProgramState(){}
+	private ProgramState(){
+		this.currentUser = new Client("Default User", "1234");
+	}
     public static ProgramState getInstance(){
         if (instance == null){
             synchronized (ProgramState.class){
@@ -36,6 +38,9 @@ public class ProgramState {
 	
 	public User getCurrentUser(){
 		return this.currentUser;
+	}
+	public void setCurrentUser(User updatedUser){
+		this.currentUser = updatedUser;
 	}
 	
 }

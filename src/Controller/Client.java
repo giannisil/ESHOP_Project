@@ -8,8 +8,11 @@ package Controller;
 public class Client extends User{
 	private ShoppingCart cart;
 	
-	public Client (){
+	private Client (){}
+	public Client (String username, String password){
 		super.userType = UserType.CLIENT;
+		super.username = username;
+		super.password = password;
 	}
 	public void displayProductCatalog(enum SortBy);
 	public boolean addProductToCart(Product, int amount){

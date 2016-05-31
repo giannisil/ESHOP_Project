@@ -32,7 +32,7 @@ public final class MainFrame {
     }
 	
 	public static void main(String[] args){  
-		MainFrame.getInstance().EventDemo();       
+		MainFrame.getInstance();       
 	}
 	
 	private void prepareGUI(){
@@ -40,6 +40,12 @@ public final class MainFrame {
       mainFrame.setSize(960,400);
 	  mainFrame.setResizable(false);
 	  mainFrame.setLayout(new GridLayout(2, 1));
+	  
+	  mainFrame.addWindowListener(new WindowAdapter() {
+         public void windowClosing(WindowEvent windowEvent){
+	        System.exit(0);
+         }        
+      });
 	  
 	  headerPanel	= new HeaderPanel();
 	  contentPanel	= new PasswordFormPanel();
