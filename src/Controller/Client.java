@@ -12,7 +12,6 @@ public class Client extends User{
 		super.userType = UserType.CLIENT;
 	}
 	public void displayProductCatalog(enum SortBy);
-	public boolean logout();
 	public boolean addProductToCart(Product, int amount){
 		this.cart.add(Product,amount)		
 	}

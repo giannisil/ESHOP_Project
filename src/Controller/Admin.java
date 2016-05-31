@@ -11,7 +11,6 @@ public class Admin extends User{
 		super.userType = UserType.ADMIN;
 	}
 	public User createUSer(String username, String password);
-	public boolean logout();
 	public boolean addProductToCatalog(Product);
 	public boolean deleteProductFromCatalog(Product);
 	public boolean updateOrderState(OrderState,Order);
