@@ -1,15 +1,17 @@
 
 package Model;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  *
  * @author iliadis
  */
 public abstract class Product {
+	private static final AtomicInteger instanceCounter = new AtomicInteger();
     private String name;
     private String descr;
-    private static int productSerialNo = 0;
-    private int ProductCode;
+    private final int productSerialNo;
     private String brand;
     private int price;
     private int screensize;
@@ -17,7 +19,7 @@ public abstract class Product {
     boolean hasScreen = false;
     
     public Product(){
-        this.ProductCode = ++Product.productSerialNo;
+        this.productSerialNo = Product.instanceCounter.incrementAndGet();
     }
     public String getName() {
         return name;
@@ -30,18 +32,10 @@ public abstract class Product {
     public String getDescr() {
         return descr;
     }
+    
+    public int getProductSerialNo (){ return this.productSerialNo; }
 
-    public void setDescr(String descr) {
-        this.descr = descr;
-    }
-
-    public int getProductCode() {
-        return ProductCode;
-    }
-
-    public void setProductCode(int ProductCode) {
-        this.ProductCode = ProductCode;
-    }
+    public void setDescr (String descr) { this.descr = descr; }
 
     public String getBrand() {
         return brand;

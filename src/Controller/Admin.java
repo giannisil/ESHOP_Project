@@ -21,13 +21,8 @@ public class Admin extends User{
 		super.password = password;
 	}
 	
-	public User createUser(String username, String password, UserType userType){
-		User user;
-		
-		if 		(userType == UserType.ADMIN) { user = new Admin(username, password);  } // TODO make sure new user is in UserCatalog
-		else								 { user = new Client(username, password); } // TODO same here
-		
-		return user;
+	public User createUser(String username, String password, UserType userType){		
+		return UserCatalog.getInstance().createUser(username, password, UserType.ADMIN);
 	}
 	
 	public void  addProductToCatalog(Product product){

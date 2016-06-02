@@ -4,6 +4,7 @@ import Controller.ProgramState;
 import Controller.UserCatalog;
 
 import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,26 +25,28 @@ public class PasswordFormPanel extends JPanel{
 	JLabel			errorLabel;
 
 	public PasswordFormPanel(){
-		this.setLayout(new GridLayout(4, 1));
+		this.setLayout(new FlowLayout());
 		usernamePanel = new JPanel();
 		usernamePanel.setLayout(new FlowLayout());
 		usernameField = new JTextField();
 		passwordPanel = new JPanel();
 		passwordPanel.setLayout(new FlowLayout());
 		passwordField = new JPasswordField();
+		errorLabel = new JLabel("Incorrect username and/or password. ");
+		errorLabel.setVisible(false);
 		submitButton = new JButton("Submit");
 		submitButton.setActionCommand("Submit_Credentials");
 		submitButton.addActionListener(
 				new PasswordFormPanel.ButtonClickListener(usernameField.getText(), 
 				new String(this.passwordField.getPassword()), 
 				errorLabel));
-		errorLabel = new JLabel("Incorrect username and/or password. ");
-		errorLabel.setVisible(false);
 		
-		usernamePanel.add(usernameLabel);
+		usernamePanel.add(usernameLabel = new JLabel("Username: "));
+		this.usernameField.setPreferredSize(new Dimension(200, 30));
 		usernamePanel.add(usernameField);
 		
-		passwordPanel.add(passwordLabel);
+		passwordPanel.add(passwordLabel = new JLabel("Password: "));
+		this.passwordField.setPreferredSize(new Dimension(200, 30));
 		passwordPanel.add(passwordField);
 		
 		this.add(usernamePanel);
@@ -69,6 +72,7 @@ public class PasswordFormPanel extends JPanel{
 //				MainFrame.getInstance().setContentPanel(new ProductCategoryPanel()); // TODO implement class ProductCategoryPanel
 			}
 			else {
+				this.errorLabel.setBackground(new Color((float)1.0, (float)0.0, (float)0.0));
 				this.errorLabel.setVisible(true);
 			}
 		}		

@@ -50,7 +50,7 @@ public final class OrderCatalog {
 	 * them
 	 */
 	public static class OrderEntry {
-		private static final AtomicInteger ordersCounter = new AtomicInteger();
+		private static final AtomicInteger instanceCounter = new AtomicInteger();
 		private final int orderSerialNo;
 		private ShoppingCart relatedCart;
 		private ClientEntry relatedClient;
@@ -61,7 +61,7 @@ public final class OrderCatalog {
 		
 		public OrderEntry (ShoppingCart cart){
 			this.orderState = OrderState.SUBMISSION;
-			this.orderSerialNo = this.ordersCounter.incrementAndGet();
+			this.orderSerialNo = this.instanceCounter.incrementAndGet();
 			this.relatedCart = cart;
 			this.relatedClient = cart.getRelatedClient().getClientCredentials();
 		}

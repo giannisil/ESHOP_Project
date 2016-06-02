@@ -18,7 +18,7 @@ import Model.ProductCatalog;
  * @author iliadis
  */
 public class ProgramState {
-	private static volatile ProgramState instance; //TODO add atributes
+	private static volatile ProgramState instance;
 	private User currentUser;
 
 	

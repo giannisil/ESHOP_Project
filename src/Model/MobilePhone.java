@@ -15,7 +15,7 @@ public class MobilePhone extends Product {
         super.hasScreen = true;
     }
     
-    public MobilePhone (String OS, String CPU, int CamRes, enum Connectivity connectivity){
+    public MobilePhone (String OS, String CPU, int CamRes, Connectivity connectivity){
         super.hasScreen    = true;
         this.OS            = OS;
         this.CPU           = CPU;

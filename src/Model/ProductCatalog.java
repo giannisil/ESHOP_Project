@@ -36,11 +36,11 @@ public final class ProductCatalog {
 	}
 	
 	public void addProduct(Product product){
-		this.catalog.put(product.getProductCode(), product);
+		this.catalog.put(product.getProductSerialNo(), product);
 	}
 	
 	public boolean deleteProduct(Product product){
-		if (this.catalog.remove(product.getProductCode()) == null){
+		if (this.catalog.remove(product.getProductSerialNo()) == null){
 			return false;
 		}
 		return true;

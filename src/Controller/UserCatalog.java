@@ -10,7 +10,7 @@ import Model.ProductCatalog;
  */
 public class UserCatalog {
 	private static volatile UserCatalog instance;
-	private HashMap<String, User> usersCatalog;
+	private HashMap<Integer, User> usersCatalog;
 	
 	
 	
@@ -25,6 +25,19 @@ public class UserCatalog {
             }
         }
         return instance;
+    }
+    
+    public User createUser (String username, String password, UserType userType){
+    	User user;
+    	if (userType == UserType.ADMIN){
+    		user = new Admin(username, password);
+    	}
+    	else {
+    		user = new Client(username, password);
+    	}
+    	
+    	this.usersCatalog.put(user.getUserID(), user);
+    	return user;
     }
 	
 	public void setInstance(UserCatalog instance){

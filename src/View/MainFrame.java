@@ -37,9 +37,9 @@ public final class MainFrame {
 	
 	private void prepareGUI(){
       mainFrame = new JFrame("ESHOP_Project_Iliadis");
-      mainFrame.setSize(960,400);
+      mainFrame.setSize(960, 800);
 	  mainFrame.setResizable(false);
-	  mainFrame.setLayout(new GridLayout(2, 1));
+	  mainFrame.setLayout(new BorderLayout());
 	  
 	  mainFrame.addWindowListener(new WindowAdapter() {
          public void windowClosing(WindowEvent windowEvent){
@@ -50,7 +50,7 @@ public final class MainFrame {
 	  headerPanel	= new HeaderPanel();
 	  contentPanel	= new PasswordFormPanel();
 	  
-	  mainFrame.add(headerPanel);
+	  mainFrame.add(headerPanel, BorderLayout.NORTH);
 	  mainFrame.add(contentPanel);
 	  
 	  mainFrame.setVisible(true);
