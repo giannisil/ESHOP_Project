@@ -69,7 +69,7 @@ public class ProgramState {
 	public void loadState (){
 		   ObjectInputStream oisUC;
 			try {
-				oisUC = new ObjectInputStream(new FileInputStream("UserCatalog.db"));
+			   oisUC = new ObjectInputStream(new FileInputStream("UserCatalog.db"));
 			   try {
 					UserCatalog.getInstance().setInstance(((UserCatalog) oisUC.readObject()));
 				} catch (ClassNotFoundException e) {
@@ -93,21 +93,86 @@ public class ProgramState {
 				e.printStackTrace();
 			}
 
-		   ObjectInputStream oisCCL = new ObjectInputStream(new FileInputStream("CompanyClientsLog.db"));
-		   CompanyClientsLog.getInstance().setInstance(((CompanyClientsLog) oisCCL.readObject()));
-		   oisCCL.close();
+		   ObjectInputStream oisCCL;
+		   try {
+			   oisCCL = new ObjectInputStream(new FileInputStream("CompanyClientsLog.db"));
+			   try {
+					CompanyClientsLog.getInstance().setInstance(((CompanyClientsLog) oisCCL.readObject()));
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					oisCCL.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 
-		   ObjectInputStream oisICL = new ObjectInputStream(new FileInputStream("IndividualClientsLog.db"));
-		   IndividualClientsLog.getInstance().setInstance(((IndividualClientsLog) oisICL.readObject()));
-		   oisICL.close();
+		   ObjectInputStream oisICL;
+		   try {
+				oisICL = new ObjectInputStream(new FileInputStream("IndividualClientsLog.db"));
+				try {
+					IndividualClientsLog.getInstance().setInstance(((IndividualClientsLog) oisICL.readObject()));
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				oisICL.close();
+		   } catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		   } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		   }
 
-		   ObjectInputStream oisOC = new ObjectInputStream(new FileInputStream("OrderCatalog.db"));
-		   OrderCatalog.getInstance().setInstance(((OrderCatalog) oisOC.readObject()));
-		   oisOC.close();
+		   ObjectInputStream oisOC;
+		   try {
+				oisOC = new ObjectInputStream(new FileInputStream("OrderCatalog.db"));
+				try {
+					OrderCatalog.getInstance().setInstance(((OrderCatalog) oisOC.readObject()));
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				oisOC.close();
+		   } catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		   } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		   }
 
-		   ObjectInputStream oisPC = new ObjectInputStream(new FileInputStream("ProductCatalog.db"));
-		   ProductCatalog.getInstance().setInstance(((ProductCatalog) oisPC.readObject()));
-		   oisPC.close();
+		   ObjectInputStream oisPC;
+		   try {
+				oisPC = new ObjectInputStream(new FileInputStream("ProductCatalog.db"));
+				try {
+					ProductCatalog.getInstance().setInstance(((ProductCatalog) oisPC.readObject()));
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				oisPC.close();
+		   } catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		   } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		   }
 	}
 	
 	public boolean validateCredentials (String username, String password){
