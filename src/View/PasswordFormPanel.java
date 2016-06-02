@@ -15,6 +15,7 @@ import javax.swing.*;
  * @author iliadis
  */
 public class PasswordFormPanel extends JPanel{
+	JPanel			centerPanel;
 	JPanel			usernamePanel;
 	JLabel			usernameLabel;
 	JTextField		usernameField;
@@ -25,12 +26,11 @@ public class PasswordFormPanel extends JPanel{
 	JLabel			errorLabel;
 
 	public PasswordFormPanel(){
-		this.setLayout(new FlowLayout());
-		usernamePanel = new JPanel();
-		usernamePanel.setLayout(new FlowLayout());
+		this.setLayout(new BorderLayout());
+		centerPanel   = new JPanel(new FlowLayout());
+		usernamePanel = new JPanel(new FlowLayout());
 		usernameField = new JTextField();
-		passwordPanel = new JPanel();
-		passwordPanel.setLayout(new FlowLayout());
+		passwordPanel = new JPanel(new FlowLayout());
 		passwordField = new JPasswordField();
 		errorLabel = new JLabel("Incorrect username and/or password. ");
 		errorLabel.setVisible(false);
@@ -49,10 +49,11 @@ public class PasswordFormPanel extends JPanel{
 		this.passwordField.setPreferredSize(new Dimension(200, 30));
 		passwordPanel.add(passwordField);
 		
-		this.add(usernamePanel);
-		this.add(passwordPanel);
-		this.add(submitButton);	
-		this.add(errorLabel);
+		this.add(centerPanel, BorderLayout.CENTER);
+		centerPanel.add(usernamePanel);
+		centerPanel.add(passwordPanel);
+		centerPanel.add(submitButton);	
+		this.add(errorLabel, BorderLayout.SOUTH);
 		
 		this.setVisible(true);
 	}
