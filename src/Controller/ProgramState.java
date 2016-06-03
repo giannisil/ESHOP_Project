@@ -12,12 +12,13 @@ import Model.CompanyClientsLog;
 import Model.IndividualClientsLog;
 import Model.OrderCatalog;
 import Model.ProductCatalog;
+import java.io.Serializable;
 
 /**
  *
  * @author iliadis
  */
-public class ProgramState {
+public class ProgramState  implements Serializable{
 	private static volatile ProgramState instance;
 	private User currentUser;
 
@@ -46,23 +47,23 @@ public class ProgramState {
      * @return true if successful, false if not
      */
 	public void saveState () throws IOException{		
-	    ObjectOutputStream oosUC = new ObjectOutputStream(new FileOutputStream("UserCatalog.db"));
+	    ObjectOutputStream oosUC = new ObjectOutputStream(new FileOutputStream("./db_files/UserCatalog.db"));
 	    oosUC.writeObject(UserCatalog.getInstance());
 	    oosUC.close();
 	    
-	    ObjectOutputStream oosCCL = new ObjectOutputStream(new FileOutputStream("CompanyClientsLog.db"));
+	    ObjectOutputStream oosCCL = new ObjectOutputStream(new FileOutputStream("./db_files/CompanyClientsLog.db"));
 	    oosCCL.writeObject(CompanyClientsLog.getInstance());
 	    oosCCL.close();
 	    
-	    ObjectOutputStream oosICL = new ObjectOutputStream(new FileOutputStream("IndividualClientsLog.db"));
+	    ObjectOutputStream oosICL = new ObjectOutputStream(new FileOutputStream("./db_files/IndividualClientsLog.db"));
 	    oosICL.writeObject(IndividualClientsLog.getInstance());
 	    oosICL.close();
 	    
-	    ObjectOutputStream oosOC = new ObjectOutputStream(new FileOutputStream("OrderCatalog.db"));
+	    ObjectOutputStream oosOC = new ObjectOutputStream(new FileOutputStream("./db_files/OrderCatalog.db"));
 	    oosOC.writeObject(OrderCatalog.getInstance());
 	    oosOC.close();
 	    
-	    ObjectOutputStream oosPC = new ObjectOutputStream(new FileOutputStream("ProductCatalog.db"));
+	    ObjectOutputStream oosPC = new ObjectOutputStream(new FileOutputStream("./db_files/ProductCatalog.db"));
 	    oosPC.writeObject(ProductCatalog.getInstance());
 	    oosPC.close();
 	}

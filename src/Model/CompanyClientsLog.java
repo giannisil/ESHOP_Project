@@ -1,13 +1,14 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  *
  * @author iliadis
  */
-public final class CompanyClientsLog {
+public final class CompanyClientsLog implements Serializable {
     private static volatile CompanyClientsLog instance;
 	private HashMap<String, IndividualClientEntry> clientsLog;
 

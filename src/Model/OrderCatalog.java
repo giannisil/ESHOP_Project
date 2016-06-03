@@ -1,6 +1,7 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -8,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author iliadis
  */
-public final class OrderCatalog {
+public final class OrderCatalog implements Serializable {
     private static volatile OrderCatalog instance;
     private HashMap<Integer, OrderEntry> catalog; 
         

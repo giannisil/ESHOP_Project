@@ -6,13 +6,14 @@
 package Model;
 
 import Model.Product;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  *
  * @author iliadis
  */
-public final class ProductCatalog {
+public final class ProductCatalog implements Serializable {
     private static volatile ProductCatalog instance;
 	private HashMap <Integer, Product> catalog;
 	

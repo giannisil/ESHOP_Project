@@ -3,12 +3,13 @@ package Controller;
 import java.util.HashMap;
 
 import Model.ProductCatalog;
+import java.io.Serializable;
 
 /**
  *
  * @author iliadis
  */
-public class UserCatalog {
+public class UserCatalog implements Serializable{
 	private static volatile UserCatalog instance;
 	private HashMap<Integer, User> usersCatalog;
 	
