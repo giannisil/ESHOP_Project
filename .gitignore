@@ -226,3 +226,4 @@ dist/
 nbdist/
 nbactions.xml
 .nb-gradle/
+nbproject/private/private.xml
