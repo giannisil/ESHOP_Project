@@ -14,7 +14,9 @@ public final class CompanyClientsLog implements Serializable {
 
 	
 	
-	private CompanyClientsLog(){}
+	private CompanyClientsLog(){
+		this.clientsLog = new HashMap();
+	}
 	
     public static CompanyClientsLog getInstance(){
         if (instance == null){

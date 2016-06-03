@@ -19,7 +19,9 @@ public final class ProductCatalog implements Serializable {
 	
 	
 	
-	private ProductCatalog() {}
+	private ProductCatalog() {
+		this.catalog = new HashMap();
+	}
 	
 	public static ProductCatalog getInstance(){
         if (instance == null){

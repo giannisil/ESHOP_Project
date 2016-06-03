@@ -24,8 +24,9 @@ public class ProgramState  implements Serializable{
 
 	
 	private ProgramState(){
-		this.currentUser = new Client("Default User", "1234");
-                this.loadState();
+		this.currentUser = UserCatalog.getInstance().createUser("Default User", "1234", UserType.CLIENT);
+//		System.out.println("Is User catalog populated? -> "+UserCatalog.getInstance().hasUsers()); //TODO remove DEBUG
+        this.loadState();
 	}
     public static ProgramState getInstance(){
         if (instance == null){
@@ -71,103 +72,87 @@ public class ProgramState  implements Serializable{
 	public void loadState (){
 		   ObjectInputStream oisUC;
 			try {
-			   oisUC = new ObjectInputStream(new FileInputStream("UserCatalog.db"));
+			   oisUC = new ObjectInputStream(new FileInputStream("./db_files/UserCatalog.db"));
 			   try {
 					UserCatalog.getInstance().setInstance(((UserCatalog) oisUC.readObject()));
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
+//					System.out.println("Is User catalog populated? -> "+UserCatalog.getInstance().hasUsers()); //TODO remove DEBUG
+//					System.out.println("User Catalog printout:\n"+UserCatalog.getInstance()); //TODO remove DEBUG
+				} catch (ClassNotFoundException | IOException e) {
 					e.printStackTrace();
 				}
 			    try {
 					oisUC.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} catch (FileNotFoundException e) {
 				// OK
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 		   ObjectInputStream oisCCL;
 		   try {
-			   oisCCL = new ObjectInputStream(new FileInputStream("CompanyClientsLog.db"));
+			   oisCCL = new ObjectInputStream(new FileInputStream("./db_files/CompanyClientsLog.db"));
 			   try {
 					CompanyClientsLog.getInstance().setInstance(((CompanyClientsLog) oisCCL.readObject()));
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
+				} catch (ClassNotFoundException | IOException e) {
 					e.printStackTrace();
 				}
 				try {
 					oisCCL.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} catch (FileNotFoundException e) {
 				// OK
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
 
 		   ObjectInputStream oisICL;
 		   try {
-				oisICL = new ObjectInputStream(new FileInputStream("IndividualClientsLog.db"));
+				oisICL = new ObjectInputStream(new FileInputStream("./db_files/IndividualClientsLog.db"));
 				try {
 					IndividualClientsLog.getInstance().setInstance(((IndividualClientsLog) oisICL.readObject()));
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				oisICL.close();
 		   } catch (FileNotFoundException e) {
 				// OK
 		   } catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 		   }
 
 		   ObjectInputStream oisOC;
 		   try {
-				oisOC = new ObjectInputStream(new FileInputStream("OrderCatalog.db"));
+				oisOC = new ObjectInputStream(new FileInputStream("./db_files/OrderCatalog.db"));
 				try {
 					OrderCatalog.getInstance().setInstance(((OrderCatalog) oisOC.readObject()));
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				oisOC.close();
 		   } catch (FileNotFoundException e) {
 				// OK
 		   } catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 		   }
 
 		   ObjectInputStream oisPC;
 		   try {
-				oisPC = new ObjectInputStream(new FileInputStream("ProductCatalog.db"));
+				oisPC = new ObjectInputStream(new FileInputStream("./db_files/ProductCatalog.db"));
 				try {
 					ProductCatalog.getInstance().setInstance(((ProductCatalog) oisPC.readObject()));
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				oisPC.close();
 		   } catch (FileNotFoundException e) {
 				// OK
 		   } catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 		   }
 	}

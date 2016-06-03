@@ -14,7 +14,9 @@ public final class IndividualClientsLog implements Serializable {
 	
     
     
-    private IndividualClientsLog(){}
+    private IndividualClientsLog(){
+		this.clientsLog = new HashMap();
+	}
     
     public static IndividualClientsLog getInstance(){
         if (instance == null){

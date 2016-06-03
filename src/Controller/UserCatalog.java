@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import Model.ProductCatalog;
 import java.io.Serializable;
+import java.util.Iterator;
 
 /**
  *
@@ -15,7 +16,9 @@ public class UserCatalog implements Serializable{
 	
 	
 	
-	private UserCatalog() {}
+	private UserCatalog() {
+		this.usersCatalog = new HashMap();
+	}
 	
     public static UserCatalog getInstance(){
         if (instance == null){
@@ -47,5 +50,18 @@ public class UserCatalog implements Serializable{
     
 	public User fetchUser (String username) {
 		return this.usersCatalog.get(username);
+	}
+	
+	boolean hasUsers(){ return !this.usersCatalog.isEmpty();}
+	
+	@Override
+	public String toString(){
+		String output = new String();
+		
+		for (User user : this.usersCatalog.values()) {
+			output += user + "\n";
+		}
+		
+		return output;
 	}
 }
