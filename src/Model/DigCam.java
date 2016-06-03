@@ -13,9 +13,11 @@ public class DigCam extends Product {
     
     public DigCam (){
         super.hasScreen = true;
+		super.productType = ProductCategory.DIGICAM;
     }
     public DigCam (String Brand, int Zoom, float Price, int CamRes){
         super.hasScreen = true; 
+		super.productType = ProductCategory.DIGICAM;
         this.Brand      = Brand;
         this.Zoom       = Zoom;
         this.Price      = Price;

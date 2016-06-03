@@ -11,7 +11,10 @@ public final class CompanyClientsLog {
     private static volatile CompanyClientsLog instance;
 	private HashMap<String, IndividualClientEntry> clientsLog;
 
+	
+	
 	private CompanyClientsLog(){}
+	
     public static CompanyClientsLog getInstance(){
         if (instance == null){
             synchronized (CompanyClientsLog.class){
@@ -22,5 +25,9 @@ public final class CompanyClientsLog {
         }
         return instance;
     }
+	
+	public void setInstance(CompanyClientsLog instance){
+		CompanyClientsLog.instance = instance;
+	}
     
 }

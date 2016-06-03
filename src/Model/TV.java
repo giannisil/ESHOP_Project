@@ -12,9 +12,11 @@ public class TV extends Product {
     
     public TV (){
         super.hasScreen = true;
+		super.productType = ProductCategory.TV;
     }
     public TV (String Brand, String FrameRate, float Price){
         super.hasScreen     = true; 
+		super.productType = ProductCategory.TV;
         this.Brand          = Brand;
         this.FrameRate      = FrameRate;
         this.Price          = Price;

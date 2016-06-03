@@ -13,9 +13,11 @@ public class Tablet extends Product {
     
     public Tablet (){
         super.hasScreen = true;
+		super.productType = ProductCategory.TABLET;
     }
     public Tablet (String OS, String CPU, int Memory, String Brand){
         super.hasScreen   = true; 
+		super.productType = ProductCategory.TABLET;
         this.OS           = OS;
         this.CPU          = CPU;
         this.Memory       = Memory;

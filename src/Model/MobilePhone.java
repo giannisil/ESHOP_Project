@@ -13,10 +13,12 @@ public class MobilePhone extends Product {
 	
     public MobilePhone (){
         super.hasScreen = true;
+		super.productType = ProductCategory.MOBILE_PHONE;
     }
     
-    public MobilePhone (String OS, String CPU, int CamRes, enum Connectivity connectivity){
+    public MobilePhone (String OS, String CPU, int CamRes, Connectivity connectivity){
         super.hasScreen    = true;
+		super.productType = ProductCategory.MOBILE_PHONE;
         this.OS            = OS;
         this.CPU           = CPU;
         this.CamRes        = CamRes;

@@ -2,15 +2,20 @@ package Controller;
 
 import java.util.HashMap;
 
+import Model.ProductCatalog;
+
 /**
  *
  * @author iliadis
  */
 public class UserCatalog {
 	private static volatile UserCatalog instance;
-	private HashMap<String, User> usersCatalog;
+	private HashMap<Integer, User> usersCatalog;
+	
+	
 	
 	private UserCatalog() {}
+	
     public static UserCatalog getInstance(){
         if (instance == null){
             synchronized (UserCatalog.class){
@@ -21,7 +26,25 @@ public class UserCatalog {
         }
         return instance;
     }
-	User fetchUser (String username) {
+    
+    public User createUser (String username, String password, UserType userType){
+    	User user;
+    	if (userType == UserType.ADMIN){
+    		user = new Admin(username, password);
+    	}
+    	else {
+    		user = new Client(username, password);
+    	}
+    	
+    	this.usersCatalog.put(user.getUserID(), user);
+    	return user;
+    }
+	
+	public void setInstance(UserCatalog instance){
+		UserCatalog.instance = instance;
+	}
+    
+	public User fetchUser (String username) {
 		return this.usersCatalog.get(username);
 	}
 }

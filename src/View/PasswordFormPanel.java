@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.ProgramState;
+import Controller.UserCatalog;
+
 import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 /**
@@ -16,6 +15,7 @@ import javax.swing.*;
  * @author iliadis
  */
 public class PasswordFormPanel extends JPanel{
+	JPanel			centerPanel;
 	JPanel			usernamePanel;
 	JLabel			usernameLabel;
 	JTextField		usernameField;
@@ -26,32 +26,34 @@ public class PasswordFormPanel extends JPanel{
 	JLabel			errorLabel;
 
 	public PasswordFormPanel(){
-		this.setLayout(new GridLayout(4, 1));
-		usernamePanel = new JPanel();
-		usernamePanel.setLayout(new FlowLayout());
+		this.setLayout(new BorderLayout());
+		centerPanel   = new JPanel(new FlowLayout());
+		usernamePanel = new JPanel(new FlowLayout());
 		usernameField = new JTextField();
-		passwordPanel = new JPanel();
-		passwordPanel.setLayout(new FlowLayout());
+		passwordPanel = new JPanel(new FlowLayout());
 		passwordField = new JPasswordField();
+		errorLabel = new JLabel("Incorrect username and/or password. ");
+		errorLabel.setVisible(false);
 		submitButton = new JButton("Submit");
 		submitButton.setActionCommand("Submit_Credentials");
 		submitButton.addActionListener(
 				new PasswordFormPanel.ButtonClickListener(usernameField.getText(), 
 				new String(this.passwordField.getPassword()), 
 				errorLabel));
-		errorLabel = new JLabel("Incorrect username and/or password. ");
-		errorLabel.setVisible(false);
 		
-		usernamePanel.add(usernameLabel);
+		usernamePanel.add(usernameLabel = new JLabel("Username: "));
+		this.usernameField.setPreferredSize(new Dimension(200, 30));
 		usernamePanel.add(usernameField);
 		
-		passwordPanel.add(passwordLabel);
+		passwordPanel.add(passwordLabel = new JLabel("Password: "));
+		this.passwordField.setPreferredSize(new Dimension(200, 30));
 		passwordPanel.add(passwordField);
 		
-		this.add(usernamePanel);
-		this.add(passwordPanel);
-		this.add(submitButton);	
-		this.add(errorLabel);
+		this.add(centerPanel, BorderLayout.CENTER);
+		centerPanel.add(usernamePanel);
+		centerPanel.add(passwordPanel);
+		centerPanel.add(submitButton);	
+		this.add(errorLabel, BorderLayout.SOUTH);
 		
 		this.setVisible(true);
 	}
@@ -68,9 +70,10 @@ public class PasswordFormPanel extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			if (ProgramState.getInstance().validateCredentials(this.username, this.password)){
 				ProgramState.getInstance().setCurrentUser(UserCatalog.getInstance().fetchUser(this.username)); // Fetch User object with the validated username and set it as current user
-//				MainFrame.getInstance().setContentPanel(new ProductCategoryPanel()); // TODO implement class ProductCategoryPanel
+				MainFrame.getInstance().setContentPanel(new ProductCategoriesPanel());
 			}
 			else {
+				this.errorLabel.setBackground(new Color((float)1.0, (float)0.0, (float)0.0));
 				this.errorLabel.setVisible(true);
 			}
 		}		
