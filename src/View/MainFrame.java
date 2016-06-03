@@ -8,6 +8,9 @@ package View;
 import Controller.ProgramState;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 public final class MainFrame {
@@ -32,31 +35,36 @@ public final class MainFrame {
     }
 	
 	public static void main(String[] args){  
-		MainFrame.getInstance();       
+		MainFrame.getInstance();  
 	}
 	
 	private void prepareGUI(){
-      mainFrame = new JFrame("ESHOP_Project_Iliadis");
-      mainFrame.setSize(800, 600);
-	  mainFrame.setResizable(false);
-	  mainFrame.setLayout(new BorderLayout());
-	  
-	  mainFrame.addWindowListener(new WindowAdapter() {
-         public void windowClosing(WindowEvent windowEvent){
-	        System.exit(0);
-         }        
-      });
-	  
-	  headerPanel	= new HeaderPanel();
-	  contentPanel	= new PasswordFormPanel();
-	  
-	  mainFrame.add(headerPanel, BorderLayout.NORTH);
-	  mainFrame.add(contentPanel);
-	  
-	  mainFrame.setVisible(true);
+		mainFrame = new JFrame("ESHOP_Project_Iliadis");
+		mainFrame.setSize(800, 600);
+		mainFrame.setResizable(false);
+		mainFrame.setLayout(new BorderLayout());
+
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent){
+				try {
+					ProgramState.getInstance().saveState();
+				} catch (IOException ex) {
+					JOptionPane.showMessageDialog(mainFrame, ex);
+				}
+				System.exit(0);
+			}        
+		});
+
+		headerPanel	= new HeaderPanel();
+		contentPanel	= new PasswordFormPanel();
+
+		mainFrame.add(headerPanel, BorderLayout.NORTH);
+		mainFrame.add(contentPanel);
+
+		mainFrame.setVisible(true);
 	}
 	
-	void setContentPanel(JPanel updatedPanel){
-		this.contentPanel = updatedPanel;
-	}
+	public JFrame getMainFrame (){ return this.mainFrame; }
+	
+	public void setContentPanel (JPanel updatedPanel){ this.contentPanel = updatedPanel; }
 }

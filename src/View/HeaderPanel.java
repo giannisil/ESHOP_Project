@@ -48,10 +48,10 @@ public class HeaderPanel extends JPanel{
 		
 		public void actionPerformed(ActionEvent e) {
 			try {
+				ProgramState.getInstance().saveState();
 				ProgramState.getInstance().getCurrentUser().logout();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				JOptionPane.showInternalMessageDialog(this.relatedPanel, e1.getStackTrace().toString(), "Error saving data to database.", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(MainFrame.getInstance().getMainFrame(), "Error saving to database: "  + e1);
 			}
 		}		
 	}

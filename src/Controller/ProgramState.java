@@ -24,6 +24,7 @@ public class ProgramState {
 	
 	private ProgramState(){
 		this.currentUser = new Client("Default User", "1234");
+                this.loadState();
 	}
     public static ProgramState getInstance(){
         if (instance == null){
@@ -86,8 +87,7 @@ public class ProgramState {
 					e.printStackTrace();
 				}
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// OK
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -112,8 +112,7 @@ public class ProgramState {
 					e.printStackTrace();
 				}
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// OK
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -131,8 +130,7 @@ public class ProgramState {
 				}
 				oisICL.close();
 		   } catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// OK
 		   } catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -149,8 +147,7 @@ public class ProgramState {
 				}
 				oisOC.close();
 		   } catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// OK
 		   } catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -167,8 +164,7 @@ public class ProgramState {
 				}
 				oisPC.close();
 		   } catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// OK
 		   } catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
